@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Garage - Professional Brake & Diagnostic Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--bg-light);
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        .lang-toggle button {
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-toggle button.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Highlights */
+        .highlights {
+            background: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .highlights-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            background: var(--bg-light);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .highlight-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Services */
+        .services {
+            background: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .future-service {
+            opacity: 0.7;
+            border: 2px dashed var(--text-light);
+        }
+
+        /* Pricing */
+        .pricing {
+            background: var(--white);
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .pricing-table thead {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .pricing-table th:last-child,
+        .pricing-table td:last-child {
+            text-align: center;
+        }
+
+        .pricing-table th:nth-last-child(2),
+        .pricing-table td:nth-last-child(2) {
+            text-align: center;
+        }
+
+        .pricing-table tbody tr {
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .pricing-table tbody tr:hover {
+            background: var(--bg-light);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* About */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .about-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .certifications {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cert-badge {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-form {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .calendar-container {
+            margin-top: 2rem;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .calendar-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .pricing-table {
+                font-size: 0.9rem;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 1rem;
+            }
+        }
+
+        /* Hidden class for language switching */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo"> Tianwin's Garage</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home / 主页</a></li>
+                <li><a href="#services">Services / 服务</a></li>
+                <li><a href="#pricing">Pricing / 价格</a></li>
+                <li><a href="#about">About / 关于</a></li>
+                <li><a href="#contact">Contact / 预约</a></li>
+            </ul>
+            <div class="lang-toggle">
+                <button id="lang-en" onclick="switchLanguage('en')">EN</button>
+                <button id="lang-zh" class="active" onclick="switchLanguage('zh')">中文</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-en="Auto Garage" data-zh="董卓维修店">Tianwin's Garage</h1>
+            <p data-en="Professional Brake Pad Replacement Service" data-zh="专业刹车片更换服务">Professional Brake Pad Replacement Service</p>
+            <a href="#contact" class="btn-primary" data-en="Book Now" data-zh="立即预约">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="highlights">
+        <div class="highlights-container">
+            <div class="highlight-card">
+                <div class="highlight-icon">✅</div>
+                <h3 data-en="Certified Technicians" data-zh="专业技师">Certified Technicians</h3>
+                <p data-en="ASE certified professionals" data-zh="终身质保 免费更换">ASE certified professionals</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">⚡</div>
+                <h3 data-en="Same-Day Service" data-zh="当日服务">Same-Day Service</h3>
+                <p data-en="Quick turnaround on most repairs" data-zh="一小时内完成 不影响您工作出行">Quick turnaround on most repairs</p>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">💰</div>
+                <h3 data-en="Transparent Pricing" data-zh="透明定价">Transparent Pricing</h3>
+                <p data-en="No hidden fees, upfront quotes" data-zh="无隐藏费用，预先报价">No hidden fees, upfront quotes</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <h2 class="section-title" data-en="Our Services" data-zh="服务项目">Our Services</h2>
+            <p class="section-subtitle" data-en="Professional automotive services you can trust" data-zh="值得信赖的专业汽车服务">Professional automotive services you can trust</p>
+            
+            <div class="services-grid">
+                <div class="service-card" style="max-width: 600px; margin: 0 auto; grid-column: 1 / -1;">
+                    <h3 data-en="Brake Pad Replacement" data-zh="刹车片更换">Brake Pad Replacement</h3>
+                    <p data-en="Complete brake pad service including:" data-zh="完整的刹车片服务包括：">Complete brake pad service including:</p>
+                    <ul>
+                        <li data-en="Thorough inspection" data-zh="全面检查">Thorough inspection</li>
+                        <li data-en="Professional replacement service" data-zh="专业更换服务">Professional replacement service</li>
+                        <li data-en="Test drive verification" data-zh="试驾验证">Test drive verification</li>
+                        <li data-en="We accept customer-provided parts" data-zh="我们接受客户自带零件">We accept customer-provided parts</li>
+                    </ul>
+                    <p style="margin-top: 1rem; padding: 1rem; background: #e0f2fe; border-radius: 8px; color: var(--primary-color);">
+                        <strong data-en="Note: You can bring your own brake pads, and we'll install them for you!" data-zh="注意：您可以自带刹车片，我们将为您安装！">Note: You can bring your own brake pads, and we'll install them for you!</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="section-container">
+            <h2 class="section-title" data-en="Transparent Pricing" data-zh="透明价格">Transparent Pricing</h2>
+            <p class="section-subtitle" data-en="Fair rates with no surprises" data-zh="公平价格，无隐藏费用">Fair rates with no surprises</p>
+            
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th data-en="Service" data-zh="服务">Service</th>
+                        <th data-en="Description" data-zh="描述">Description</th>
+                        <th data-en="Labor" data-zh="工时费">Labor</th>
+                        <th data-en="Parts" data-zh="零件费">Parts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-en="Brake Pad Replacement" data-zh="刹车片更换">Brake Pad Replacement</td>
+                        <td data-en="Includes inspection, replacement, and test drive. We accept customer-provided parts." data-zh="包括检查、更换和试驾。我们接受客户自带零件。">Includes inspection, replacement, and test drive. We accept customer-provided parts.</td>
+                        <td><span class="price">$50 （75$ 上门）</span> </td>
+                        <td><span class="price">$50</span> <span data-en="start from" data-zh="起">起</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-style: italic;" data-en="* Labor and parts priced separately. You may bring your own brake pads to save on parts cost." data-zh="* 工时费和零件费分别计价。您可以自带刹车片以节省零件费用。">* Labor and parts priced separately. You may bring your own brake pads to save on parts cost.</p>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2 class="section-title" data-en="Contact & Appointment" data-zh="预约联系">Contact & Appointment</h2>
+            <p class="section-subtitle" data-en="Book your service today" data-zh="今天预约您的服务">Book your service today</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 data-en="Contact Information" data-zh="联系信息">Contact Information</h3>
+                    <p>📞 <strong data-en="Phone" data-zh="电话">Phone:</strong> <a href="tel:+1234567890">(703) 929-3191</a></p>
+                    <p>📍 <strong data-en="Address" data-zh="地址">Address:</strong> 17800 colima rd, Spot 372, Rowland heights, CA 91748</p>
+                    <p>🕒 <strong data-en="Business Hours" data-zh="营业时间">Business Hours:</strong></p>
+                    <p style="padding-left: 1.5rem;" data-en="Mon-Sun: 10:00 AM - 10:00 PM" data-zh="Mon-Sun: 10:00 AM - 10:00 PM">Mon-Sun: 10:00 AM - 10:00 PM</p>
+                    
+                    <div class="calendar-container">
+                        <h4 style="margin-bottom: 1rem;" data-en="Available Appointments" data-zh="可用预约时间">Available Appointments</h4>
+                        <iframe src="https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0" style="border-width:0" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 data-en="Book Appointment" data-zh="预约服务">Book Appointment</h3>
+                    <form id="appointment-form" action="https://formspree.io/f/xananeyz" method="POST">
+                        <input type="hidden" name="_subject" id="form-subject" value="New Appointment Request">
+                        <div class="form-group">
+                            <label for="name" data-en="Name / 姓名" data-zh="姓名">Name / 姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-en="Phone / 电话" data-zh="电话">Phone / 电话</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle" data-en="Vehicle Model / 车牌号" data-zh="车牌号">Vehicle Model / 车牌号</label>
+                            <input type="text" id="vehicle" name="vehicle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointment-time" data-en="Preferred Appointment Time / 预约时间" data-zh="预约时间">Preferred Appointment Time / 预约时间</label>
+                            <input type="datetime-local" id="appointment-time" name="appointment-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parts" data-en="Bringing Your Own Parts? / 自带零件？" data-zh="自带零件？">Bringing Your Own Parts? / 自带零件？</label>
+                            <select id="parts" name="parts" required>
+                                <option value="shop-parts" data-en="Use shop parts" data-zh="使用店铺零件">Use shop parts</option>
+                                <option value="own-parts" data-en="Bringing my own parts" data-zh="自带零件">Bringing my own parts</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes" data-en="Notes / 备注" data-zh="备注">Notes / 备注</label>
+                            <textarea id="notes" name="notes"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" data-en="Submit Appointment" data-zh="提交预约">Submit Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p data-en="© 2024 Auto Garage. All rights reserved." data-zh="© 2024 汽车维修店。保留所有权利。">© 2024 Auto Garage. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentLang = 'zh';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update toggle buttons
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-zh').classList.toggle('active', lang === 'zh');
+            
+            // Update all elements with data-en and data-zh attributes
+            document.querySelectorAll('[data-en][data-zh]').forEach(element => {
+                const text = lang === 'zh' ? element.getAttribute('data-zh') : element.getAttribute('data-en');
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    if (element.type === 'submit' || element.type === 'button') {
+                        element.value = text;
+                    } else if (element.hasAttribute('placeholder')) {
+                        element.placeholder = text;
+                    }
+                } else if (element.tagName === 'OPTION') {
+                    element.textContent = text;
+                } else {
+                    element.textContent = text;
+                }
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('appointment-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = this;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = currentLang === 'zh' ? '提交中...' : 'Submitting...';
+            
+            try {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                // Format the parts selection for better readability in email
+                const partsText = data.parts === 'own-parts' 
+                    ? (currentLang === 'zh' ? '自带零件' : 'Bringing own parts')
+                    : (currentLang === 'zh' ? '使用店铺零件' : 'Using shop parts');
+                
+                // Format appointment time
+                let appointmentTimeText = '';
+                if (data['appointment-time']) {
+                    const appointmentDate = new Date(data['appointment-time']);
+                    if (currentLang === 'zh') {
+                        appointmentTimeText = appointmentDate.toLocaleString('zh-CN', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: false
+                        });
+                    } else {
+                        appointmentTimeText = appointmentDate.toLocaleString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: true
+                        });
+                    }
+                }
+                
+                // Update subject based on language
+                const subjectField = form.querySelector('#form-subject');
+                if (subjectField) {
+                    subjectField.value = currentLang === 'zh' ? '新预约请求' : 'New Appointment Request';
+                }
+                
+                const response = await fetch('https://formspree.io/f/xananeyz', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    alert(currentLang === 'zh' 
+                        ? `预约已提交！我们会尽快联系您。\n\n姓名: ${data.name}\n电话: ${data.phone}\n车牌号: ${data.vehicle}\n预约时间: ${appointmentTimeText}\n零件: ${partsText}`
+                        : `Appointment submitted! We'll contact you soon.\n\nName: ${data.name}\nPhone: ${data.phone}\nVehicle: ${data.vehicle}\nAppointment Time: ${appointmentTimeText}\nParts: ${partsText}`
+                    );
+                    form.reset();
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Submission failed');
+                }
+            } catch (error) {
+                alert(currentLang === 'zh' 
+                    ? '提交失败，请稍后重试或直接致电我们。'
+                    : 'Submission failed. Please try again later or call us directly.'
+                );
+                console.error('Form submission error:', error);
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+
+        // Initialize language
+        switchLanguage('zh');
+        
+        // Set minimum date for appointment time to today
+        const appointmentTimeInput = document.getElementById('appointment-time');
+        if (appointmentTimeInput) {
+            const now = new Date();
+            // Set to current time, rounded to nearest 15 minutes
+            const minutes = Math.ceil(now.getMinutes() / 15) * 15;
+            now.setMinutes(minutes);
+            const minDateTime = now.toISOString().slice(0, 16);
+            appointmentTimeInput.min = minDateTime;
+        }
+    </script>
+</body>
+</html>
