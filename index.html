@@ -507,7 +507,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 data-en="Auto Garage" data-zh="董卓维修店">Tianwin's Garage</h1>
-            <p data-en="Professional Brake Pad Replacement Service" data-zh="专业刹车片更换服务">Professional Brake Pad Replacement Service</p>
+            <p data-en="Professional Brake Service & BMW Tuning" data-zh="专业刹车服务与BMW刷机">Professional Brake Service & BMW Tuning</p>
             <a href="#contact" class="btn-primary" data-en="Book Now" data-zh="立即预约">Book Now</a>
         </div>
     </section>
@@ -540,7 +540,7 @@
             <p class="section-subtitle" data-en="Professional automotive services you can trust" data-zh="值得信赖的专业汽车服务">Professional automotive services you can trust</p>
             
             <div class="services-grid">
-                <div class="service-card" style="max-width: 600px; margin: 0 auto; grid-column: 1 / -1;">
+                <div class="service-card">
                     <h3 data-en="Brake Pad Replacement" data-zh="刹车片更换">Brake Pad Replacement</h3>
                     <p data-en="Complete brake pad service including:" data-zh="完整的刹车片服务包括：">Complete brake pad service including:</p>
                     <ul>
@@ -551,6 +551,24 @@
                     </ul>
                     <p style="margin-top: 1rem; padding: 1rem; background: #e0f2fe; border-radius: 8px; color: var(--primary-color);">
                         <strong data-en="Note: You can bring your own brake pads, and we'll install them for you!" data-zh="注意：您可以自带刹车片，我们将为您安装！">Note: You can bring your own brake pads, and we'll install them for you!</strong>
+                    </p>
+                </div>
+                <div class="service-card">
+                    <h3 data-en="BMW Tuning & Hidden Features" data-zh="BMW刷机解锁隐藏功能">BMW Tuning & Hidden Features</h3>
+                    <p data-en="Professional BMW coding and customization services:" data-zh="专业BMW编程和定制服务：">Professional BMW coding and customization services:</p>
+                    <ul>
+                        <li data-en="Enable wireless Bluetooth audio streaming (if not enabled by default)" data-zh="启用无线蓝牙音频流（如未默认启用）">Enable wireless Bluetooth audio streaming (if not enabled by default)</li>
+                        <li data-en="Auto-fold mirrors when locking & unfold when unlocking" data-zh="锁车时自动折叠后视镜，解锁时自动展开">Auto-fold mirrors when locking & unfold when unlocking</li>
+                        <li data-en="Disable or retain Auto Start/Stop function in your preferred mode" data-zh="禁用或保留自动启停功能（按您的偏好设置）">Disable or retain Auto Start/Stop function in your preferred mode</li>
+                        <li data-en="Ambient lighting customization: brightness levels, sync with instrument cluster" data-zh="氛围灯定制：亮度调节，与仪表盘同步">Ambient lighting customization: brightness levels, sync with instrument cluster</li>
+                        <li data-en="Headlight/lighting system tweaks: LED conversion, cornering lights, fog light behavior" data-zh="大灯/照明系统调整：LED转换、转向灯、雾灯行为">Headlight/lighting system tweaks: LED conversion, cornering lights, fog light behavior</li>
+                        <li data-en="Memory features: remember last climate-control or air-circulation setting at startup" data-zh="记忆功能：记住上次的空调或空气循环设置">Memory features: remember last climate-control or air-circulation setting at startup</li>
+                        <li data-en="Hide or customize warnings/notifications in iDrive (light clusters, parking sensors)" data-zh="隐藏或自定义iDrive中的警告/通知（灯光、泊车传感器等）">Hide or customize warnings/notifications in iDrive (light clusters, parking sensors)</li>
+                        <li data-en="Video in motion activation and other advanced features" data-zh="行车视频激活及其他高级功能">Video in motion activation and other advanced features</li>
+                        <li data-en="ECU remapping and performance tuning" data-zh="ECU刷写和性能调校">ECU remapping and performance tuning</li>
+                    </ul>
+                    <p style="margin-top: 1rem; padding: 1rem; background: #e0f2fe; border-radius: 8px; color: var(--primary-color);">
+                        <strong data-en="Specialized BMW expertise - All models supported" data-zh="专业BMW技术 - 支持所有车型">Specialized BMW expertise - All models supported</strong>
                     </p>
                 </div>
             </div>
@@ -578,6 +596,12 @@
                         <td data-en="Includes inspection, replacement, and test drive. We accept customer-provided parts." data-zh="包括检查、更换和试驾。我们接受客户自带零件。">Includes inspection, replacement, and test drive. We accept customer-provided parts.</td>
                         <td><span class="price">$50 （75$ 上门）</span> </td>
                         <td><span class="price">$50</span> <span data-en="start from" data-zh="起">起</span></td>
+                    </tr>
+                    <tr>
+                        <td data-en="BMW Tuning & Hidden Features" data-zh="BMW刷机解锁隐藏功能">BMW Tuning & Hidden Features</td>
+                        <td data-en="Bluetooth audio streaming, auto-fold mirrors, disable Start/Stop, ambient lighting, headlight tweaks, memory features, iDrive customization, video in motion, ECU remapping. All BMW models supported." data-zh="蓝牙音频流、自动折叠后视镜、禁用启停、氛围灯、大灯调整、记忆功能、iDrive定制、行车视频、ECU刷写。支持所有BMW车型。">Bluetooth audio streaming, auto-fold mirrors, disable Start/Stop, ambient lighting, headlight tweaks, memory features, iDrive customization, video in motion, ECU remapping. All BMW models supported.</td>
+                        <td><span class="price">$30</span> <span data-en="start from" data-zh="起">起</span></td>
+                        <td data-en="N/A" data-zh="不适用">N/A</td>
                     </tr>
                 </tbody>
             </table>
@@ -628,8 +652,16 @@
                             <input type="datetime-local" id="appointment-time" name="appointment-time" required>
                         </div>
                         <div class="form-group">
+                            <label for="service-type" data-en="Service Type / 服务类型" data-zh="服务类型">Service Type / 服务类型</label>
+                            <select id="service-type" name="service-type" required>
+                                <option value="" data-en="Select a service" data-zh="选择服务">Select a service</option>
+                                <option value="brake-pad" data-en="Brake Pad Replacement" data-zh="刹车片更换">Brake Pad Replacement</option>
+                                <option value="bmw-tuning" data-en="BMW Tuning & Hidden Features" data-zh="BMW刷机解锁隐藏功能">BMW Tuning & Hidden Features</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="parts-group">
                             <label for="parts" data-en="Bringing Your Own Parts? / 自带零件？" data-zh="自带零件？">Bringing Your Own Parts? / 自带零件？</label>
-                            <select id="parts" name="parts" required>
+                            <select id="parts" name="parts">
                                 <option value="shop-parts" data-en="Use shop parts" data-zh="否">Use shop parts</option>
                                 <option value="own-parts" data-en="Bringing my own parts" data-zh="是">Bringing my own parts</option>
                             </select>
@@ -691,6 +723,28 @@
             });
         });
 
+        // Show/hide parts field based on service type
+        const serviceTypeSelect = document.getElementById('service-type');
+        const partsGroup = document.getElementById('parts-group');
+        const partsSelect = document.getElementById('parts');
+        
+        if (serviceTypeSelect && partsGroup) {
+            serviceTypeSelect.addEventListener('change', function() {
+                if (this.value === 'brake-pad') {
+                    partsGroup.style.display = 'block';
+                    partsSelect.required = true;
+                } else {
+                    partsGroup.style.display = 'none';
+                    partsSelect.required = false;
+                    partsSelect.value = '';
+                }
+            });
+            // Initialize on page load
+            if (serviceTypeSelect.value !== 'brake-pad') {
+                partsGroup.style.display = 'none';
+            }
+        }
+
         // Form submission
         document.getElementById('appointment-form').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -706,10 +760,18 @@
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData);
                 
-                // Format the parts selection for better readability in email
-                const partsText = data.parts === 'own-parts' 
-                    ? (currentLang === 'zh' ? '自带零件' : 'Bringing own parts')
-                    : (currentLang === 'zh' ? '使用店铺零件' : 'Using shop parts');
+                // Format service type
+                const serviceTypeText = data['service-type'] === 'bmw-tuning'
+                    ? (currentLang === 'zh' ? 'BMW刷机解锁隐藏功能' : 'BMW Tuning & Hidden Features')
+                    : (currentLang === 'zh' ? '刹车片更换' : 'Brake Pad Replacement');
+                
+                // Format the parts selection for better readability in email (only for brake pad)
+                let partsText = '';
+                if (data['service-type'] === 'brake-pad') {
+                    partsText = data.parts === 'own-parts' 
+                        ? (currentLang === 'zh' ? '自带零件' : 'Bringing own parts')
+                        : (currentLang === 'zh' ? '使用店铺零件' : 'Using shop parts');
+                }
                 
                 // Format appointment time
                 let appointmentTimeText = '';
@@ -751,11 +813,24 @@
                 });
                 
                 if (response.ok) {
-                    alert(currentLang === 'zh' 
-                        ? `预约已提交！我们会尽快联系您。\n\n姓名: ${data.name}\n电话: ${data.phone}\n车牌号: ${data.vehicle}\n预约时间: ${appointmentTimeText}\n零件: ${partsText}`
-                        : `Appointment submitted! We'll contact you soon.\n\nName: ${data.name}\nPhone: ${data.phone}\nVehicle: ${data.vehicle}\nAppointment Time: ${appointmentTimeText}\nParts: ${partsText}`
-                    );
+                    let successMessage = '';
+                    if (currentLang === 'zh') {
+                        successMessage = `预约已提交！我们会尽快联系您。\n\n姓名: ${data.name}\n电话: ${data.phone}\n车牌号: ${data.vehicle}\n服务类型: ${serviceTypeText}\n预约时间: ${appointmentTimeText}`;
+                        if (partsText) {
+                            successMessage += `\n零件: ${partsText}`;
+                        }
+                    } else {
+                        successMessage = `Appointment submitted! We'll contact you soon.\n\nName: ${data.name}\nPhone: ${data.phone}\nVehicle: ${data.vehicle}\nService Type: ${serviceTypeText}\nAppointment Time: ${appointmentTimeText}`;
+                        if (partsText) {
+                            successMessage += `\nParts: ${partsText}`;
+                        }
+                    }
+                    alert(successMessage);
                     form.reset();
+                    // Reset parts group visibility
+                    if (partsGroup) {
+                        partsGroup.style.display = 'none';
+                    }
                 } else {
                     const errorData = await response.json();
                     throw new Error(errorData.error || 'Submission failed');
