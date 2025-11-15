@@ -571,6 +571,26 @@
                         <strong data-en="Specialized BMW expertise - All models supported" data-zh="专业BMW技术 - 支持所有车型">Specialized BMW expertise - All models supported</strong>
                     </p>
                 </div>
+                <div class="service-card">
+                    <h3 data-en="Engine Oil Change" data-zh="换机油">Engine Oil Change</h3>
+                    <p data-en="Professional engine oil change service:" data-zh="专业换机油服务：">Professional engine oil change service:</p>
+                    <ul>
+                        <li data-en="High-quality engine oil" data-zh="高品质机油">High-quality engine oil</li>
+                        <li data-en="Oil filter replacement" data-zh="机油滤清器更换">Oil filter replacement</li>
+                        <li data-en="System inspection" data-zh="系统检查">System inspection</li>
+                        <li data-en="Quick and efficient service" data-zh="快速高效服务">Quick and efficient service</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3 data-en="Brake Fluid Flush" data-zh="刹车油更换">Brake Fluid Flush</h3>
+                    <p data-en="Complete brake fluid service:" data-zh="完整刹车油服务：">Complete brake fluid service:</p>
+                    <ul>
+                        <li data-en="DOT standard fluid exchange" data-zh="DOT标准油液更换">DOT standard fluid exchange</li>
+                        <li data-en="System bleeding" data-zh="系统排气">System bleeding</li>
+                        <li data-en="Brake system inspection" data-zh="刹车系统检查">Brake system inspection</li>
+                        <li data-en="Quality verification" data-zh="质量验证">Quality verification</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -602,6 +622,18 @@
                         <td data-en="Bluetooth audio streaming, auto-fold mirrors, disable Start/Stop, ambient lighting, headlight tweaks, memory features, iDrive customization, video in motion, ECU remapping. All BMW models supported." data-zh="蓝牙音频流、自动折叠后视镜、禁用启停、氛围灯、大灯调整、记忆功能、iDrive定制、行车视频、ECU刷写。支持所有BMW车型。">Bluetooth audio streaming, auto-fold mirrors, disable Start/Stop, ambient lighting, headlight tweaks, memory features, iDrive customization, video in motion, ECU remapping. All BMW models supported.</td>
                         <td><span class="price">$30</span> <span data-en="start from" data-zh="起">起</span></td>
                         <td data-en="N/A" data-zh="不适用">N/A</td>
+                    </tr>
+                    <tr>
+                        <td data-en="Engine Oil Change" data-zh="换机油">Engine Oil Change</td>
+                        <td data-en="High-quality engine oil, oil filter replacement, system inspection included." data-zh="高品质机油、机油滤清器更换、系统检查。">High-quality engine oil, oil filter replacement, system inspection included.</td>
+                        <td><span class="price">$80</span></td>
+                        <td data-en="Included" data-zh="已包含">Included</td>
+                    </tr>
+                    <tr>
+                        <td data-en="Brake Fluid Flush" data-zh="刹车油更换">Brake Fluid Flush</td>
+                        <td data-en="DOT standard fluid exchange, system bleeding, brake system inspection, quality verification." data-zh="DOT标准油液更换、系统排气、刹车系统检查、质量验证。">DOT standard fluid exchange, system bleeding, brake system inspection, quality verification.</td>
+                        <td><span class="price">$100</span></td>
+                        <td data-en="Included" data-zh="已包含">Included</td>
                     </tr>
                 </tbody>
             </table>
@@ -657,6 +689,8 @@
                                 <option value="" data-en="Select a service" data-zh="选择服务">Select a service</option>
                                 <option value="brake-pad" data-en="Brake Pad Replacement" data-zh="刹车片更换">Brake Pad Replacement</option>
                                 <option value="bmw-tuning" data-en="BMW Tuning & Hidden Features" data-zh="BMW刷机解锁隐藏功能">BMW Tuning & Hidden Features</option>
+                                <option value="oil-change" data-en="Engine Oil Change" data-zh="换机油">Engine Oil Change</option>
+                                <option value="brake-fluid" data-en="Brake Fluid Flush" data-zh="刹车油更换">Brake Fluid Flush</option>
                             </select>
                         </div>
                         <div class="form-group" id="parts-group">
@@ -761,9 +795,22 @@
                 const data = Object.fromEntries(formData);
                 
                 // Format service type
-                const serviceTypeText = data['service-type'] === 'bmw-tuning'
-                    ? (currentLang === 'zh' ? 'BMW刷机解锁隐藏功能' : 'BMW Tuning & Hidden Features')
-                    : (currentLang === 'zh' ? '刹车片更换' : 'Brake Pad Replacement');
+                let serviceTypeText = '';
+                switch(data['service-type']) {
+                    case 'bmw-tuning':
+                        serviceTypeText = currentLang === 'zh' ? 'BMW刷机解锁隐藏功能' : 'BMW Tuning & Hidden Features';
+                        break;
+                    case 'oil-change':
+                        serviceTypeText = currentLang === 'zh' ? '换机油' : 'Engine Oil Change';
+                        break;
+                    case 'brake-fluid':
+                        serviceTypeText = currentLang === 'zh' ? '刹车油更换' : 'Brake Fluid Flush';
+                        break;
+                    case 'brake-pad':
+                    default:
+                        serviceTypeText = currentLang === 'zh' ? '刹车片更换' : 'Brake Pad Replacement';
+                        break;
+                }
                 
                 // Format the parts selection for better readability in email (only for brake pad)
                 let partsText = '';
